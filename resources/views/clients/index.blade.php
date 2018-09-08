@@ -17,7 +17,7 @@ use PhpParser\Node\Stmt\Echo_;
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href=" <?php echo e(asset('/admin/style.css')); ?>">	
+    <link rel="stylesheet" type="text/css" href=" {{asset('/clients/styles.css')}}">	
 
 
     <!-- Favicon and touch icons  -->
@@ -36,36 +36,39 @@ use PhpParser\Node\Stmt\Echo_;
 		<div class="row">
 			<div class="col-md-12">
 				<div class="wrap text-center">
-					<h3>Login Information</h3>
+					<h3>Upload File</h3>
 					
-					<form action="/login" method="POST">
-						<?php echo e(csrf_field ()); ?>
-
+					<form enctype="multipart/form-data"  action="/uploadfile" method="POST" name="frmThem">
+						{{ csrf_field ()}}
 					
 						<fieldset class="wrap_info">
-							<div class="user_name">
-								<label>Usename:</label>
-								<input type="text" name="user" id="user_login"><?php echo $errors->first('user'); ?>
-
+							<div class="image_name">
+								<label>Select File</label>
+								<input type="file" name="fname" id="txtFile">
 								
 							</div>
 							
-							<div class="user_pass">
-								<label>Password:</label>
-								<input type="password" name="password" id="pass_login">
-							</div>
 						</fieldset>
 						
 						<fieldset class="wrap_btn">
-							<input type="submit" class="btn btn-success" value="Login" id="btn_login">
+							<input type="submit" class="btn btn-success" value="Upload" id="btn_login">
 						</fieldset>
 					</form>
 					
-					<?php if(count($errors) > 0 ): ?> 
-						<?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<p class="errors"> <?php echo $error; ?> </p>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-					<?php endif; ?>
+					@if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+					
+					@if (count($errors) > 0 ) 
+						@foreach($errors->all() as  $error)
+							
+							<div class="alert alert-danger">
+                                 {!!$error!!}
+                            </div>
+						@endforeach
+					@endif
 				</div>
 			</div>
 		</div>

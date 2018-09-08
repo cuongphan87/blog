@@ -44,7 +44,8 @@ use PhpParser\Node\Stmt\Echo_;
 						<fieldset class="wrap_info">
 							<div class="user_name">
 								<label>Usename:</label>
-								<input type="text" name="user" id="user_login">
+								<input type="text" name="user" id="user_login">{!! $errors->first('user') !!}
+								
 							</div>
 							
 							<div class="user_pass">

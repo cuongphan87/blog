@@ -14,12 +14,14 @@
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
 
-Router::get('/', function () {
-    return view('welcome');
-});
+Router::get('/','client\IndexController@view');
+// Router::any('{any?}','client\IndexController@view')->where('any','(.*)');
+
 
 Router::get('/login','admin\LoginController@getLogin');
 
 Router::post('/login','admin\LoginController@postLogin');
 
 Router::get('/homeadmin','admin\HomeAdminController@getHome');
+
+Router::post('/uploadfile','admin\UploadFileController@upload');
