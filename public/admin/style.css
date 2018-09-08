@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+@import url("/css/bootstrap.css");
+
+h3 {
+	color: blue;
+	text-transform: uppercase;
+}
+
+.wrap {
+	width: 300px;
+	margin: 200px auto;
+	border: solid 1px #000;
+}
+
+.wrap label {
+	margin-right: 20px;
+}
+
+.wrap .user_name {
+	margin-bottom: 10px;
+}
+
+.wrap .	user_name  #user_login {
+	margin-left: 5px;
+}
+
+.wrap .wrap_info {
+	margin-bottom: 10px;
+}
+
+.wrap .wrap_btn {
+	padding: 10px 0;
+}
+
+.errors {
+	color: red;
+	font-weight: bold;
+}
